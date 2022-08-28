@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Botline.Control_Acceso_Estudiantes.Modelos.Estudiante;
-import com.Botline.Control_Acceso_Estudiantes.Repositorio.EstudianteRepositorio;
+import com.Botline.Control_Acceso_Estudiantes.Repositorio.RepositorioEstudiante;
 
 @Service
 public class EstudianteServicio implements IestudianteServicio {
 
     @Autowired
-	private EstudianteRepositorio repositorio;
+	private RepositorioEstudiante repositorio;
 
     @Override
     public Estudiante actualizarEstudiante(Estudiante estudiante) {

@@ -1,11 +1,16 @@
 package com.Botline.Control_Acceso_Estudiantes.Modelos;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import java.util.List;
 
 @Entity
 @Table(name = "estudiantes")
@@ -32,6 +37,9 @@ public class Estudiante extends Persona {
 
     @Column(name = "grado",nullable = false)
 	private int grado;
+
+    @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL)
+    private List<Registro> registros;
 
 	public Estudiante() {
 		
@@ -122,7 +130,28 @@ public class Estudiante extends Persona {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void addRegistro(Registro registro) {
+        registros.add(registro);
+        registro.setEstudiante(this);
+    }
+
+    public void removeRegistro(Registro registro) {
+        registros.remove(registro);
+        registro.setEstudiante(null);
+    }
+
+    public List<Registro> getRegistros() {
+        return registros;
+    }
+
+    public void setRegistros(List<Registro> registros) {
+        this.registros = registros;
+    }
+
     
 }
+
+
 
 	

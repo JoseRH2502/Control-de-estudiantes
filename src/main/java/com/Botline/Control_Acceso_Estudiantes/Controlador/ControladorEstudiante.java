@@ -11,14 +11,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.Botline.Control_Acceso_Estudiantes.Modelos.Estudiante;
 import com.Botline.Control_Acceso_Estudiantes.Servicios.IestudianteServicio;
 
+
 @Controller
-public class Controlador {
+public class ControladorEstudiante {
     @Autowired
-	private IestudianteServicio servicio;
+	private IestudianteServicio servicioEstudiante;
+
 
 	@GetMapping({ "/estudiantes", "/" })
 	public String listarEstudiantes(Model modelo) {
-		modelo.addAttribute("estudiantes", servicio.listarTodosLosEstudiantes());
+		modelo.addAttribute("estudiantes", servicioEstudiante.listarTodosLosEstudiantes());
 		return "estudiantes"; 
 	}
 
@@ -31,20 +33,20 @@ public class Controlador {
 
 	@PostMapping("/estudiantes")
 	public String guardarEstudiante(@ModelAttribute("estudiante") Estudiante estudiante) {
-		servicio.guardarEstudiante(estudiante);
+		servicioEstudiante.guardarEstudiante(estudiante);
 		return "redirect:/estudiantes";
 	}
 
 	@GetMapping("/estudiantes/editar/{id}")
 	public String mostrarFormularioDeEditar(@PathVariable int id, Model modelo) {
-		modelo.addAttribute("estudiante", servicio.obtenerEstudiantePorId(id));
+		modelo.addAttribute("estudiante", servicioEstudiante.obtenerEstudiantePorId(id));
 		return "editar_estudiante";
 	}
 
 	@PostMapping("/estudiantes/{id}")
 	public String actualizarEstudiante(@PathVariable int id, @ModelAttribute("estudiante") Estudiante estudiante,
 			Model modelo) {
-		Estudiante estudianteExistente = servicio.obtenerEstudiantePorId(id);
+		Estudiante estudianteExistente = servicioEstudiante.obtenerEstudiantePorId(id);
 		estudianteExistente.setCedula(estudiante.getCedula());
 		estudianteExistente.setNombre(estudiante.getNombre());
 		estudianteExistente.setApellido1(estudiante.getApellido1());
@@ -52,14 +54,17 @@ public class Controlador {
         estudianteExistente.setSeccion(estudiante.getSeccion());
         estudianteExistente.setGrado(estudiante.getGrado());
 	
-		servicio.actualizarEstudiante(estudianteExistente);
+		servicioEstudiante.actualizarEstudiante(estudianteExistente);
 		return "redirect:/estudiantes";
 	}
 
 	@GetMapping("/estudiantes/{id}")
 	public String eliminarEstudiante(@PathVariable int id) {
-		servicio.eliminarEstudiante(id);
+		servicioEstudiante.eliminarEstudiante(id);
 		return "redirect:/estudiantes";
 	}
+	
+	
+
     
 }
