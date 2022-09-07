@@ -15,26 +15,10 @@ public class ControladorUsuario {
     @Autowired
 	private IestudianteServicio servicioEstudiante;
 
-
     @GetMapping("/iniciarSesion")
 	public String formularioIniciarSesion(Model modelo) {
         modelo.addAttribute("estudiantes", servicioEstudiante.listarTodosLosEstudiantes());
 		return "IniciarSesion";
 	}
-
-	@GetMapping("/iniciarSesion2")
-	public String formularioIniciarSesion2(Model modelo) {
-        modelo.addAttribute("estudiantes", servicioEstudiante.listarTodosLosEstudiantes());
-		return "IniciarSesion2";
-	}
-
-
-	@GetMapping("/login")
-	public String formularioIniciarSesion3(Model modelo) {
-        modelo.addAttribute("estudiantes", servicioEstudiante.listarTodosLosEstudiantes());
-		return "login";
-	}
-
-
 
 }
