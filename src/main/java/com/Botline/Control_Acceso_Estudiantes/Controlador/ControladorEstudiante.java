@@ -24,14 +24,14 @@ public class ControladorEstudiante {
 		return "estudiantes"; 
 	}
 
-	@GetMapping("/estudiantes/nuevo")
+	@GetMapping("/estudiantes/nuevo") //envío
 	public String mostrarFormularioDeRegistrtarEstudiante(Model modelo) {
 		Estudiante estudiante = new Estudiante();
 		modelo.addAttribute("estudiante", estudiante);
 		return "crear_estudiante";
 	}
 
-	@PostMapping("/estudiantes")
+	@PostMapping("/estudiantes")  //traer 
 	public String guardarEstudiante(@ModelAttribute("estudiante") Estudiante estudiante) {
 		servicioEstudiante.guardarEstudiante(estudiante);
 		return "redirect:/estudiantes";
