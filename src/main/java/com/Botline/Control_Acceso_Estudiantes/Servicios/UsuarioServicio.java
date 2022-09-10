@@ -1,12 +1,12 @@
 package com.Botline.Control_Acceso_Estudiantes.Servicios;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
 import com.Botline.Control_Acceso_Estudiantes.Modelos.Usuario;
 import com.Botline.Control_Acceso_Estudiantes.Repositorio.RepositorioUsuario;
 
+@Service
 public class UsuarioServicio implements IusuarioServicio {
 
     @Autowired
@@ -19,8 +19,7 @@ public class UsuarioServicio implements IusuarioServicio {
 
     @Override
     public void eliminarUsuario(int id) {
-       repositorio.deleteById(id);
-        
+       repositorio.deleteById(id); 
     }
 
     @Override
@@ -38,4 +37,5 @@ public class UsuarioServicio implements IusuarioServicio {
         return repositorio.findById(id).get();
     }
    
+    
 }

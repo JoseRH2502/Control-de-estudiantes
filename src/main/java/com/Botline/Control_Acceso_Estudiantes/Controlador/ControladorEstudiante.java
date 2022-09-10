@@ -18,7 +18,7 @@ public class ControladorEstudiante {
 	private IestudianteServicio servicioEstudiante;
 
 
-	@GetMapping({ "/estudiantes", "/" })
+	@GetMapping({ "/estudiantes"})
 	public String listarEstudiantes(Model modelo) {
 		modelo.addAttribute("estudiantes", servicioEstudiante.listarTodosLosEstudiantes());
 		return "estudiantes"; 
@@ -53,6 +53,7 @@ public class ControladorEstudiante {
         estudianteExistente.setApellido2(estudiante.getApellido2());
         estudianteExistente.setSeccion(estudiante.getSeccion());
         estudianteExistente.setGrado(estudiante.getGrado());
+		estudianteExistente.setEmail(estudiante.getEmail());
 	
 		servicioEstudiante.actualizarEstudiante(estudianteExistente);
 		return "redirect:/estudiantes";

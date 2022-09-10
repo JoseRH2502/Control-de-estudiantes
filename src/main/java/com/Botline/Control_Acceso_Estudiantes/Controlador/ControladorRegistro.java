@@ -1,13 +1,7 @@
 package com.Botline.Control_Acceso_Estudiantes.Controlador;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.Botline.Control_Acceso_Estudiantes.Modelos.Estudiante;
-import com.Botline.Control_Acceso_Estudiantes.Modelos.Registro;
-import com.Botline.Control_Acceso_Estudiantes.Servicios.IregistroServicio;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ControladorRegistro {

@@ -7,8 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
+
+import lombok.Data;
 
 import java.util.List;
 
@@ -41,11 +43,15 @@ public class Estudiante extends Persona {
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL)
     private List<Registro> registros;
 
+    
+    @Column(name = "email",nullable = true,length = 50)
+	private String email;
+
 	public Estudiante() {
 		
 	}
 
-    public Estudiante(int cedula, String nombre, String apellido1, String apellido2, String seccion, int grado) {
+    public Estudiante(int cedula, String nombre, String apellido1, String apellido2, String seccion, int grado, String email) {
         super();
         this.cedula = cedula;
         this.nombre = nombre;
@@ -53,9 +59,10 @@ public class Estudiante extends Persona {
         this.apellido2 = apellido2;
         this.seccion = seccion;
         this.grado = grado;
+        this.email = email;
     }
 
-    public Estudiante(int id, int cedula, String nombre, String apellido1, String apellido2, String seccion, int grado) {
+    public Estudiante(int id, int cedula, String nombre, String apellido1, String apellido2, String seccion, int grado, String email) {
         super();
         this.id = id;
         this.cedula = cedula;
@@ -64,9 +71,8 @@ public class Estudiante extends Persona {
         this.apellido2 = apellido2;
         this.seccion = seccion;
         this.grado = grado;
+        this.email = email;
     }
-
-    
 
 
     public int getCedula() {
@@ -148,8 +154,15 @@ public class Estudiante extends Persona {
     public void setRegistros(List<Registro> registros) {
         this.registros = registros;
     }
-
     
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
 
 

@@ -7,58 +7,33 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
 
 @Entity
+@Data
 @Table(name = "Usuarios")
-public class Usuario {
+public class Usuario extends Persona{
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id; 
-    
-    @Column(name = "username", nullable = false)
-    String username;
-    
-    @Column(name = "contraseña", nullable = false)
-    String contraseña;
+   
+    @Column(name = "contrasena", nullable = false)
+    String contrasena;
 
-    public Usuario() {
-    }
+    @Column(name = "cedula",nullable = false, unique = true)
+	private int cedula;
+	
+	@Column(name = "nombre",nullable = false,length = 50)
+	private String nombre;
+	
+	@Column(name = "apellido1",nullable = false,length = 50)
+	private String apellido1;
 
-    public Usuario( String username, String contraseña) {
-        this.username = username;
-        this.contraseña = contraseña;
-    }
+    @Column(name = "apellido2",nullable = false,length = 50)
+	private String apellido2;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario [contraseña=" + contraseña + ", id=" + id + ", username=" + username + "]";
-    }
-
-    
-
-    
+    @Column(name = "email",nullable = true,unique = true,length = 50)
+	private String email;
+   
 }
