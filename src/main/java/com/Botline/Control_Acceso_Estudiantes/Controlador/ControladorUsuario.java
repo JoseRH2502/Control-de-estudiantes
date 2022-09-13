@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,11 +40,13 @@ public class ControladorUsuario {
 
 	@PostMapping("/register")  //traer 
 	public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario) {
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+		usuario.setContrasena(bCryptPasswordEncoder.encode(usuario.getContrasena()));
 		usuarioServicio.guardarUsuario(usuario);
 		return "redirect:/register";
 	}
 
-/* */
+/* 
 	@GetMapping("/login") //mostrar los datos
 	public String setUsuarioLogin(Model modelo) {
 		Usuario usuario = new Usuario();
@@ -61,7 +64,7 @@ public class ControladorUsuario {
 		public ResponseEntity<List<Usuario>> getUsuarioByEmail(@RequestParam String email , String contrasena){
 		return new ResponseEntity<List<Usuario>>( RepoUsuario.findByEmailAndContrasena(email, contrasena), HttpStatus.OK);
 	}
-
+*/
 	/*
 	 * 
 	 * 	@GetMapping("/login/findByEmailAndContrasena")

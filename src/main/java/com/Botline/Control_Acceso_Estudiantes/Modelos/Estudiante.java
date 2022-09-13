@@ -10,8 +10,6 @@ import javax.persistence.OneToMany;
 
 import javax.persistence.Table;
 
-import lombok.Data;
-
 import java.util.List;
 
 @Entity

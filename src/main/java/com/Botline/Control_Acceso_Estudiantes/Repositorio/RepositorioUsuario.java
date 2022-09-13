@@ -11,5 +11,4 @@ public interface RepositorioUsuario extends JpaRepository<Usuario, Integer> {
     
     List<Usuario> findByCedula(String cedula);
     List<Usuario> findByEmailAndContrasena(String email, String contrasena);
-    
 }

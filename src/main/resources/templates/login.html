@@ -21,9 +21,9 @@
                                     <div class="card-header-loggin"><h3 class="text-center font-weight-light my-4">Iniciar Sesión</h3></div>
                                     <div class="card-body">
                                     
-                                        <form th:action="@{/login/findByEmailAndContrasena?}" th:object="${usuario}" method="GET">
+                                        <form th:action="@{/login}" th:object="${usuario}" method="post">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" th:object="${email}" name="email" id="inputEmail" type="email" placeholder="name@example.com" />
+                                                <input class="form-control" th:object="${username}" name="email" id="inputEmail" type="email" placeholder="name@example.com" />
                                                 <label for="inputEmail">Correo</label>
                                             </div>
                                             <div class="form-floating mb-3">
@@ -41,6 +41,12 @@
                                                
                                             </div>
                                         </form>
+                                    </div>
+                                    <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                                        invalid username
+                                    </div>
+                                    <div th:if="${param.logout}" class="alert alert-success" role="alert">
+                                        You have been logged out
                                     </div>
                                     <div class="card-footer-loggin text-center py-3">
                                         <div class="small"><a href="\register">Crear nueva cuenta</a></div>
