@@ -45,7 +45,7 @@ public class Usuario extends Persona{
     @JoinTable(name="authorities_users",
     joinColumns=@JoinColumn(name="usuario_id"),
     inverseJoinColumns=@JoinColumn(name="authority_id"))
-    private Set<Authority> authority;
+    private Set<Authority> authority; 
 
     public int getId() {
         return id;

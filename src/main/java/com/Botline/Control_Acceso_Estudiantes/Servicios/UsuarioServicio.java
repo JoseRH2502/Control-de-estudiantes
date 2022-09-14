@@ -36,6 +36,9 @@ public class UsuarioServicio implements IusuarioServicio {
     public Usuario obtenerUsuarioPorId(int id) {
         return repositorio.findById(id).get();
     }
-   
-    
+
+    @Override
+    public List<Usuario> ListAllUsers(){
+        return repositorio.findAll();
+    }
 }

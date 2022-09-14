@@ -31,16 +31,7 @@ public class ControladorEstudiante {
 		modelo.addAttribute("estudiante", estudiante);
 		return "crear_estudiante";
 	} //este
-
-	/* 
-	@GetMapping("/estudiantes3") //envío
-	public String mostrarFormularioDeRegistrtarEstudiante2(Model modelo) {
-		Estudiante estudiante = new Estudiante();
-		modelo.addAttribute("estudiante", estudiante);
-		return "crear_estudiante2";
-	} */
-
-
+	
 	@PostMapping("/estudiantes")  //traer 
 	public String guardarEstudiante(@ModelAttribute("estudiante") Estudiante estudiante) {
 		servicioEstudiante.guardarEstudiante(estudiante);

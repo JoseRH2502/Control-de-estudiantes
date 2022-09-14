@@ -111,74 +111,38 @@
 
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container">
-                        <div class="row center-screen ">
-                            <div class="col-lg-7">
-                                <div class="card-border-loggin shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header-loggin"><h3 class="text-center font-weight-light my-4">Crear cuenta</h3></div>
-                                    <div class="card-body">
-                                        <form th:action="@{/register}" th:object="${usuario}" method="POST">
-                                            <div class="row mb-3">
-                                                <div class="col-md-4">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" th:field="*{nombre}" name="nombre" id="inputFirstName" type="text" placeholder="Enter your first name" />
-                                                        <label for="inputFirstName">Nombre</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" th:field="*{apellido1}" name="apellido1" id="inputLastName" type="text" placeholder="Enter your last name" />
-                                                        <label for="inputLastName">Primer apellido</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" th:field="*{apellido2}"  name="apellido2" id="inputLastName" type="text" placeholder="Enter your last name" />
-                                                        <label for="inputLastName">Segundo apellido</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-6">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3">
-                                                        <input class="form-control" th:field="*{cedula}" name="cedula" id="inputNombreUsuario" type="number" placeholder="name@example.com" />
-                                                        <label for="inputNombreUsuario">Cédula</label>
-                                                    </div>
-                                                </div>
-                     
-                                            </div>
-                                            
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control"  th:field="*{email}" name="email" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail">Email</label>
-                                            </div>
-
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" th:field="*{contrasena}" name="contrasena" id="inputPassword" type="password" placeholder="Create a password" />
-                                                        <label for="inputPassword">Contraseña</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
-                                                        <label for="inputPasswordConfirm">Confrimar contraseña</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-4 mb-0">
-                                                <div class="d-grid"><button class="btn btn-primary btn-block">Guardar</button></div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="card-footer-loggin text-center py-3">
-                                        <div class="small"><a href="\login">¿Ya tienes una cuenta? Ingresar</a></div>
-                                    </div>
-                                </div>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Reporte de Grupos</h1>
+    
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Tabla de grupos
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Año vigente</th>
+                                            <th>Activo</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Año vigente</th>
+                                            <th>Activo</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr th:each="grupos : ${grupos}">
+                                            <td th:text="${grupos.codigo}">Código</td>
+                                            <td th:text="${grupos.date}"> Año vigente</td>
+                                            <td th:text="${grupos.activo} ? 'Activo' : 'Inactivo'" >
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -206,6 +170,3 @@
         <script src="js/datatables-simple-demo.js"></script>
     </body>
 </html>
-
-
-

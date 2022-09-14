@@ -50,6 +50,11 @@ public class ControladorUsuario {
 		return "redirect:/register";
 	}
 
+	@GetMapping("/consulta_usuarios")
+	public String listUsers(Model modelo) {
+		modelo.addAttribute("usuarios", usuarioServicio.ListAllUsers());
+		return "consulta_usuarios"; 
+	}
 /* 
 	@GetMapping("/login") //mostrar los datos
 	public String setUsuarioLogin(Model modelo) {
