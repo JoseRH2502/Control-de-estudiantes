@@ -18,8 +18,9 @@ import org.springframework.http.HttpStatus;
 
 import com.Botline.Control_Acceso_Estudiantes.Modelos.Usuario;
 import com.Botline.Control_Acceso_Estudiantes.Repositorio.RepositorioUsuario;
-
+import com.Botline.Control_Acceso_Estudiantes.Servicios.IestudianteServicio;
 import com.Botline.Control_Acceso_Estudiantes.Servicios.IusuarioServicio;
+
 
 @Controller
 public class ControladorUsuario {
@@ -29,6 +30,9 @@ public class ControladorUsuario {
 
 	@Autowired
 	private RepositorioUsuario RepoUsuario;
+
+	@Autowired
+	private IestudianteServicio servicioEstudiante;
 	
 
 	@GetMapping("/register") //mostrar los datos

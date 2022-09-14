@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.Botline.Control_Acceso_Estudiantes.Modelos.Estudiante;
 import com.Botline.Control_Acceso_Estudiantes.Servicios.IestudianteServicio;
@@ -24,12 +25,21 @@ public class ControladorEstudiante {
 		return "estudiantes"; 
 	}
 
-	@GetMapping("/estudiantes/nuevo") //envío
+	@GetMapping("/estudiantes_nuevo") //envío
 	public String mostrarFormularioDeRegistrtarEstudiante(Model modelo) {
 		Estudiante estudiante = new Estudiante();
 		modelo.addAttribute("estudiante", estudiante);
 		return "crear_estudiante";
-	}
+	} //este
+
+	/* 
+	@GetMapping("/estudiantes3") //envío
+	public String mostrarFormularioDeRegistrtarEstudiante2(Model modelo) {
+		Estudiante estudiante = new Estudiante();
+		modelo.addAttribute("estudiante", estudiante);
+		return "crear_estudiante2";
+	} */
+
 
 	@PostMapping("/estudiantes")  //traer 
 	public String guardarEstudiante(@ModelAttribute("estudiante") Estudiante estudiante) {
