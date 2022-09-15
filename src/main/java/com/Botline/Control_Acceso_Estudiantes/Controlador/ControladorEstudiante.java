@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.Botline.Control_Acceso_Estudiantes.Modelos.Estudiante;
 import com.Botline.Control_Acceso_Estudiantes.Servicios.IestudianteServicio;
+import com.Botline.Control_Acceso_Estudiantes.Servicios.IgrupoServicio;
 
 
 @Controller
@@ -18,6 +19,8 @@ public class ControladorEstudiante {
     @Autowired
 	private IestudianteServicio servicioEstudiante;
 
+	@Autowired
+	private IgrupoServicio servicioGrupo;
 
 	@GetMapping({ "/estudiantes"})
 	public String listarEstudiantes(Model modelo) {
@@ -29,12 +32,15 @@ public class ControladorEstudiante {
 	public String mostrarFormularioDeRegistrtarEstudiante(Model modelo) {
 		Estudiante estudiante = new Estudiante();
 		modelo.addAttribute("estudiante", estudiante);
+		modelo.addAttribute("grupos", servicioGrupo.ListAllGrups());
+		System.out.println(servicioGrupo.ListAllGrups());
 		return "crear_estudiante";
 	} //este
 	
 	@PostMapping("/estudiantes")  //traer 
 	public String guardarEstudiante(@ModelAttribute("estudiante") Estudiante estudiante) {
 		servicioEstudiante.guardarEstudiante(estudiante);
+
 		return "redirect:/estudiantes";
 	}
 
@@ -52,7 +58,7 @@ public class ControladorEstudiante {
 		estudianteExistente.setNombre(estudiante.getNombre());
 		estudianteExistente.setApellido1(estudiante.getApellido1());
         estudianteExistente.setApellido2(estudiante.getApellido2());
-        estudianteExistente.setSeccion(estudiante.getSeccion());
+        //estudianteExistente.setSeccion(estudiante.getSeccion());
         estudianteExistente.setGrado(estudiante.getGrado());
 		estudianteExistente.setEmail(estudiante.getEmail());
 	

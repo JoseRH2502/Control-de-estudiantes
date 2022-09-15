@@ -38,8 +38,8 @@ public class Usuario extends Persona{
     @Column(name = "email",nullable = true,unique = true,length = 50)
 	private String email;
 
-    @Column
-	private boolean enabled;
+    @Column(name = "enabled")
+	private boolean enabled = true;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="authorities_users",

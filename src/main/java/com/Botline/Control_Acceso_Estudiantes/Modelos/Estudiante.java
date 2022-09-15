@@ -32,8 +32,8 @@ public class Estudiante extends Persona {
     @Column(name = "apellido2",nullable = false,length = 50)
 	private String apellido2;
 
-    @Column(name = "seccion",nullable = false,length = 50)
-	private String seccion;
+    /*@Column(name = "seccion",nullable = false,length = 50)
+	private String seccion; */
 
     @Column(name = "grado",nullable = false)
 	private int grado;
@@ -55,7 +55,7 @@ public class Estudiante extends Persona {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
-        this.seccion = seccion;
+        //this.seccion = seccion;
         this.grado = grado;
         this.email = email;
     }
@@ -67,7 +67,7 @@ public class Estudiante extends Persona {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
-        this.seccion = seccion;
+        //this.seccion = seccion;
         this.grado = grado;
         this.email = email;
     }
@@ -105,13 +105,15 @@ public class Estudiante extends Persona {
         this.apellido2 = apellido2;
     }
 
+    /* 
+
     public String getSeccion() {
         return seccion;
     }
 
     public void setSeccion(String seccion) {
         this.seccion = seccion;
-    }
+    } */
 
     public int getGrado() {
         return grado;
@@ -124,7 +126,7 @@ public class Estudiante extends Persona {
     @Override
     public String toString() {
         return "Estudiante [apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", cedula=" + cedula + ", grado="
-                + grado + ", nombre=" + nombre + ", seccion=" + seccion + "]";
+                + grado + ", nombre=" + nombre +  "]";
     }
 
     public int getId() {
