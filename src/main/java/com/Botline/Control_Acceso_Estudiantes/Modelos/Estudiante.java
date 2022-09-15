@@ -42,7 +42,7 @@ public class Estudiante extends Persona {
     private List<Registro> registros;
 
     
-    @Column(name = "email",nullable = true,length = 50)
+    @Column(name = "email",nullable = true, unique = true,length = 50)
 	private String email;
 
 	public Estudiante() {

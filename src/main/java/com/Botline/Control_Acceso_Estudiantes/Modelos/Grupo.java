@@ -22,10 +22,10 @@ public class Grupo {
     @Column(name = "codigo",nullable = false, unique = true)
 	private String codigo;
 
-    @Column(name = "activo",nullable = false, unique = true)
+    @Column(name = "activo",nullable = false)
 	private Boolean activo;
 
-    @Column(name = "date",nullable = false, unique = true)
+    @Column(name = "date",nullable = false)
 	private int date;
 
 	public Grupo() {

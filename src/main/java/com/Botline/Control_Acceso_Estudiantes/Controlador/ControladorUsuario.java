@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.http.HttpStatus;
 
+import com.Botline.Control_Acceso_Estudiantes.Modelos.Authority;
 import com.Botline.Control_Acceso_Estudiantes.Modelos.Usuario;
 import com.Botline.Control_Acceso_Estudiantes.Repositorio.RepositorioUsuario;
+import com.Botline.Control_Acceso_Estudiantes.Servicios.IAuthorityServicio;
 import com.Botline.Control_Acceso_Estudiantes.Servicios.IestudianteServicio;
 import com.Botline.Control_Acceso_Estudiantes.Servicios.IusuarioServicio;
 
@@ -32,20 +34,23 @@ public class ControladorUsuario {
 	private RepositorioUsuario RepoUsuario;
 
 	@Autowired
-	private IestudianteServicio servicioEstudiante;
+	private IAuthorityServicio authorityServicio;
 	
 
 	@GetMapping("/register") //mostrar los datos
 	public String setUsuario(Model modelo) {
 		Usuario usuario = new Usuario();
 		modelo.addAttribute("usuario", usuario);
+		modelo.addAttribute("authoritys", authorityServicio.ListAllAuthority());
 		return "register";
 	}
 
 	@PostMapping("/register")  //traer 
-	public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario) {
+	public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario, @ModelAttribute("authoritys") Authority authoritys) {
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
 		usuario.setContrasena(bCryptPasswordEncoder.encode(usuario.getContrasena()));
+		
+		System.out.print(authoritys.getAuthority());
 		usuarioServicio.guardarUsuario(usuario);
 		return "redirect:/register";
 	}
