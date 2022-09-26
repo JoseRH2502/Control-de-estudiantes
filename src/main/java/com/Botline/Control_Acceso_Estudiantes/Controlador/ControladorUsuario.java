@@ -1,6 +1,9 @@
 package com.Botline.Control_Acceso_Estudiantes.Controlador;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,7 @@ import org.springframework.http.HttpStatus;
 
 import com.Botline.Control_Acceso_Estudiantes.Modelos.Authority;
 import com.Botline.Control_Acceso_Estudiantes.Modelos.Usuario;
+import com.Botline.Control_Acceso_Estudiantes.Repositorio.RepositorioAuthority;
 import com.Botline.Control_Acceso_Estudiantes.Repositorio.RepositorioUsuario;
 import com.Botline.Control_Acceso_Estudiantes.Servicios.IAuthorityServicio;
 import com.Botline.Control_Acceso_Estudiantes.Servicios.IestudianteServicio;
@@ -31,12 +35,13 @@ public class ControladorUsuario {
 	private IusuarioServicio usuarioServicio;
 
 	@Autowired
-	private RepositorioUsuario RepoUsuario;
+	private RepositorioAuthority rAuthority;
 
 	@Autowired
 	private IAuthorityServicio authorityServicio;
 	
 
+	
 	@GetMapping("/register") //mostrar los datos
 	public String setUsuario(Model modelo) {
 		Usuario usuario = new Usuario();
@@ -46,11 +51,14 @@ public class ControladorUsuario {
 	}
 
 	@PostMapping("/register")  //traer 
-	public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario, @ModelAttribute("authoritys") Authority authoritys) {
+	public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario, @ModelAttribute("authoritys") Authority authoritys
+	, @ModelAttribute("authorityX") String authority_id) {
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
 		usuario.setContrasena(bCryptPasswordEncoder.encode(usuario.getContrasena()));
-		
-		System.out.print(authoritys.getAuthority());
+		//List<Authority> authorityList = new ArrayList<Authority>(); 
+		Set<Authority> authorityList = new HashSet < > (); 
+		authorityList.add(rAuthority.findById(Long.parseLong(authority_id)));
+		usuario.setAuthority(authorityList);
 		usuarioServicio.guardarUsuario(usuario);
 		return "redirect:/register";
 	}

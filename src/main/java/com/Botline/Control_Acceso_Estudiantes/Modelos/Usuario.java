@@ -1,5 +1,6 @@
 package com.Botline.Control_Acceso_Estudiantes.Modelos;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,13 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+
 import javax.persistence.JoinColumn;
 
 @Entity
+@Data
 @Table(name = "Usuarios")
 public class Usuario extends Persona{
     
+ 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id; 
@@ -40,82 +48,30 @@ public class Usuario extends Persona{
 
     @Column(name = "enabled")
 	private boolean enabled = true;
+/*
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "authorities_users",
+        joinColumns = {
+            @JoinColumn(name = "usuario_id")
+        },
+        inverseJoinColumns = {
+            @JoinColumn(name = "authority_id")
+        })
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="authorities_users",
-    joinColumns=@JoinColumn(name="usuario_id"),
-    inverseJoinColumns=@JoinColumn(name="authority_id"))
+    private List<Authority> authority = new ArrayList<Authority>(); 
+ */
+
+ 
+     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "authorities_users",
+        joinColumns = {
+            @JoinColumn(name = "usuario_id")
+        },
+        inverseJoinColumns = {
+            @JoinColumn(name = "authority_id")
+        })
     private Set<Authority> authority; 
+ 
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public int getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(int cedula) {
-        this.cedula = cedula;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido1() {
-        return apellido1;
-    }
-
-    public void setApellido1(String apellido1) {
-        this.apellido1 = apellido1;
-    }
-
-    public String getApellido2() {
-        return apellido2;
-    }
-
-    public void setApellido2(String apellido2) {
-        this.apellido2 = apellido2;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public Set<Authority> getAuthority() {
-        return authority;
-    }
-
-    public void setAuthority(Set<Authority> authority) {
-        this.authority = authority;
-    }
 }

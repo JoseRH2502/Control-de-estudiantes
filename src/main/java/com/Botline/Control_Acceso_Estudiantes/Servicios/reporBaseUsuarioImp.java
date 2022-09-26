@@ -35,7 +35,7 @@ public class reporBaseUsuarioImp implements UserDetailsService {
             GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authority.getAuthority());
                 grantList.add(grantedAuthority);
         }
-            
+
         //Crear El objeto UserDetails que va a ir en sesion y retornarlo.
         UserDetails user = (UserDetails) new User(appUser.getEmail(), appUser.getContrasena(), grantList);
             return user;
