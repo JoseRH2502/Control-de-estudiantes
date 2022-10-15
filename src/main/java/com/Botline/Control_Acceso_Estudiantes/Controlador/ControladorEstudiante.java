@@ -71,8 +71,4 @@ public class ControladorEstudiante {
 		servicioEstudiante.eliminarEstudiante(id);
 		return "redirect:/estudiantes";
 	}
-	
-	
-
-    
 }

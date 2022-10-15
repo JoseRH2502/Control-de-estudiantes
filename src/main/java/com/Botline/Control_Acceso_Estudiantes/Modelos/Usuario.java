@@ -62,7 +62,7 @@ public class Usuario extends Persona{
  */
 
  
-     @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "authorities_users",
         joinColumns = {
             @JoinColumn(name = "usuario_id")

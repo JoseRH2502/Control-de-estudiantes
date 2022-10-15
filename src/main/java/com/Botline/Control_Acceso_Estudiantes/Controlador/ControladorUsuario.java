@@ -1,30 +1,21 @@
 package com.Botline.Control_Acceso_Estudiantes.Controlador;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.http.HttpStatus;
-
 import com.Botline.Control_Acceso_Estudiantes.Modelos.Authority;
 import com.Botline.Control_Acceso_Estudiantes.Modelos.Usuario;
 import com.Botline.Control_Acceso_Estudiantes.Repositorio.RepositorioAuthority;
-import com.Botline.Control_Acceso_Estudiantes.Repositorio.RepositorioUsuario;
 import com.Botline.Control_Acceso_Estudiantes.Servicios.IAuthorityServicio;
-import com.Botline.Control_Acceso_Estudiantes.Servicios.IestudianteServicio;
 import com.Botline.Control_Acceso_Estudiantes.Servicios.IusuarioServicio;
 
 
