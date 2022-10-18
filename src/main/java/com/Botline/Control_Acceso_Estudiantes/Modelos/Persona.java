@@ -10,16 +10,14 @@ public abstract class Persona {
 	private String nombre;
 	private String apellido1;
 	private String apellido2;
-    private String email;
-
+  
     public Persona() {
     }
-    public Persona(int cedula, String nombre, String apellido1, String apellido2, String email) {
+    public Persona(int cedula, String nombre, String apellido1, String apellido2) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
-        this.email = email;
     }
 
     public abstract  int getCedula();
@@ -30,8 +28,6 @@ public abstract class Persona {
     public abstract void setApellido1(String apellido1);
     public abstract String getApellido2();
     public abstract void setApellido2(String apellido2);
-    public abstract String getEmail();
-    public abstract void setEmail(String email);
     
 }
 

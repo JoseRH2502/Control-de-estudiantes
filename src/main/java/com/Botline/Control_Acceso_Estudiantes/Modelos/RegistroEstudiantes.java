@@ -13,8 +13,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "registro")
-public class Registro {
+@Table(name = "registroEstudiante")
+public class RegistroEstudiantes {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,10 +27,10 @@ public class Registro {
     @Column(name = "fecha",nullable = false)
     private Date fecha;
 
-    public Registro() {
+    public RegistroEstudiantes() {
     }
 
-    public Registro(Estudiante estudiante) {
+    public RegistroEstudiantes(Estudiante estudiante) {
         this.estudiante = estudiante;
         this.fecha = new Date();
     }

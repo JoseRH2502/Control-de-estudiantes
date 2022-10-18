@@ -40,7 +40,7 @@ public class Estudiante extends Persona {
 	private int grado;
 
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL)
-    private List<Registro> registros;
+    private List<RegistroEstudiantes> registros;
 
     
     @Column(name = "email",nullable = true, unique = true,length = 50)
@@ -142,21 +142,21 @@ public class Estudiante extends Persona {
         this.id = id;
     }
 
-    public void addRegistro(Registro registro) {
+    public void addRegistro(RegistroEstudiantes registro) {
         registros.add(registro);
         registro.setEstudiante(this);
     }
 
-    public void removeRegistro(Registro registro) {
+    public void removeRegistro(RegistroEstudiantes registro) {
         registros.remove(registro);
         registro.setEstudiante(null);
     }
 
-    public List<Registro> getRegistros() {
+    public List<RegistroEstudiantes> getRegistros() {
         return registros;
     }
 
-    public void setRegistros(List<Registro> registros) {
+    public void setRegistros(List<RegistroEstudiantes> registros) {
         this.registros = registros;
     }
     
