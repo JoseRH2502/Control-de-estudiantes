@@ -11,6 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 @Table(name = "registroEstudiante")
@@ -24,8 +29,15 @@ public class RegistroEstudiantes {
     @JoinColumn(name = "FK_estudiante", updatable = false, nullable = false)
     private Estudiante estudiante;
 
-    @Column(name = "fecha",nullable = false)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(iso = ISO.DATE)
+    @Column(name = "fecha",nullable = true)
     private Date fecha;
+
+    @Column(name = "hora",nullable = true, length = 50)
+    private String hora;
+
+
 
     public RegistroEstudiantes() {
     }
@@ -62,6 +74,16 @@ public class RegistroEstudiantes {
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
     }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    
 
     
 

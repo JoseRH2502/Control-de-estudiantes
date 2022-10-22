@@ -8,18 +8,17 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Invitados</h1>
+                <h1 class="mt-4">Registros</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                     <li class="breadcrumb-item active">Tables</li>
                 </ol>
-            
-
+          
                 <div class="card mb-4">
                     <div class="card-body">
-                        ¿Desea agregar más invitados?
+                        ¿Desea agregar un nuevo registro?
                         <div class="col-lg-3">
-                            <a th:href="@{/invitado_nuevo}" class="btn btn-primary btn-sm mb3">Agregar Invitado</a>
+                            <a th:href="@{/registro_nuevo}" class="btn btn-primary btn-sm mb3">Agregar Registro</a>
                         </div>
                     </div>
                 </div>
@@ -29,20 +28,19 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        Tabla de Invitado
+                        Tabla de estudiantes
                     </div>
                     <div class="card-body">
                         <table id="datatablesSimple">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>cedula</th>
+                                    <th>Cedula</th>
                                     <th>Nombre</th>
-                                    <th>Apellido1</th>
-                                    <th>Apellido2</th>
+                                    <th>Apellido 1</th>
+                                    <th>Apellido 2</th>
                                     <th>Fecha</th>
-                                    <th>Hora Llegada</th>
-                                    <th>Hora Salida</th>
+                                    <th>Hora</th>
                                     <!--<th>Seccion</th>-->
                                     <th>Acciones</th>
                                 </tr>
@@ -50,32 +48,28 @@
                             <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>cedula</th>
+                                    <th>Cedula</th>
                                     <th>Nombre</th>
-                                    <th>Apellido1</th>
-                                    <th>Apellido2</th>
+                                    <th>apellido 1</th>
+                                    <th>apellido 2</th>
+                                    <th>Nombre</th>
                                     <th>Fecha</th>
-                                    <th>hora Llegada</th>
-                                    <th>hora Salida</th>
+                                    <th>Hora</th>
                                     <!--<th>Seccion</th>-->
                                     <th>Acciones</th>
                                 </tr>
                             </tfoot>
-                            <tr th:each="invitado : ${invitados}">
-                                <td th:text="${invitado.id}">ID</td>
-                                <td th:text="${invitado.cedula}">cedula</td>
-                                <td th:text="${invitado.nombre}">Nombre</td>
-                                <td th:text="${invitado.apellido1}">Apellido1</td>
-                                <td th:text="${invitado.apellido2}">Apellido2</td>
-                                <td th:text="${invitado.fecha}">Fecha</td>
-                                <td th:text="${invitado.horaLlegada}">Hora Llegada</td>
-                                <td th:text="${invitado.horaSalida}">Hora Salida</td>
-                                <!--<td th:text="${estudiante.seccion}">Seccion</td>-->
+                            <tr th:each="registro : ${registros}">
+                                <td th:text="${registro.id}">ID</td>
+                                <td th:text="${registro.estudiante.cedula}">Cedula</td>
+                                <td th:text="${registro.estudiante.nombre}">Nombre</td>
+                                <td th:text="${registro.estudiante.apellido1}">Apellido 1</td>
+                                <td th:text="${registro.estudiante.apellido2}">Apellido 2</td>
+                                <td th:text="${registro.fecha}">Fecha</td>
+                                <td th:text="${registro.hora}">Hora</td>
+                    
                                 <td>
-                                    <a th:href="@{/invitadoTerminar/{id}(id=${invitado.id})}"
-                                    class="btn btn-info">Finalizar</a>
-
-                                    <a th:href="@{/invitado/{id}(id=${invitado.id})}"
+                                    <a th:href="@{/registro_estudiantes/{id}(id=${registro.id})}"
                                         class="btn btn-danger">Eliminar</a>
                                 </td>
                             </tr>

@@ -1,15 +1,24 @@
 package com.Botline.Control_Acceso_Estudiantes.Modelos;
 
-import java.util.List;
 
-import javax.persistence.CascadeType;
+
+
+import java.sql.Time;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.type.TimeType;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 @Table(name = "invitado")
@@ -18,7 +27,7 @@ public class Invitado extends Persona {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-    @Column(name = "cedula",nullable = false, unique = true)
+    @Column(name = "cedula",nullable = false)
 	private int cedula;
 	
 	@Column(name = "nombre",nullable = false,length = 50)
@@ -30,19 +39,30 @@ public class Invitado extends Persona {
     @Column(name = "apellido2",nullable = false,length = 50)
 	private String apellido2;
 
-    @OneToMany(mappedBy = "invitado", cascade = CascadeType.ALL)
-    private List<RegistroInvitado> registros;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(iso = ISO.DATE)
+    @Column(name = "fecha",nullable = true)
+    private Date fecha;
+
+    @Column(name = "horaLlegada",nullable = true, length = 50)
+    private String horaLlegada;
+
+    @Column(name = "horaSalida",nullable = true, length = 50)
+    private String horaSalida;
 
     public Invitado(){}
   
-    public Invitado(int cedula, String nombre, String apellido1, String apellido2, String email, int cedula2,
-            String nombre2, String apellido12, String apellido22) {
-        super(cedula, nombre, apellido1, apellido2);
-        cedula = cedula2;
-        nombre = nombre2;
-        apellido1 = apellido12;
-        apellido2 = apellido22;
+    public Invitado(int cedula, String nombre, String apellido1, String apellido2) {
+        super();
+        this.cedula = cedula;
+        this. nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        fecha = null;
+        horaLlegada = " ";
+        horaSalida = " ";
     }
+    
 
     public int getId() {
         return id;
@@ -84,19 +104,39 @@ public class Invitado extends Persona {
         this.apellido2 = apellido2;
     }
 
-    public List<RegistroInvitado> getRegistros() {
-        return registros;
+    public String getFecha() {
+        return fecha.toString();
     }
 
-    public void setRegistros(List<RegistroInvitado> registros) {
-        this.registros = registros;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
-    @Override
-    public String toString() {
-        return "Invitado [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido1=" + apellido1
-                + ", apellido2=" + apellido2 + ", registros=" + registros + "]";
+    public String getHoraLlegada() {
+        return horaLlegada;
     }
+
+    public void setHoraLlegada(String horaLlegada) {
+        this.horaLlegada = horaLlegada;
+    }
+
+    public String getHoraSalida() {
+        return horaSalida;
+    }
+
+    public void setHoraSalida(String horaSalida) {
+        this.horaSalida = horaSalida;
+    }
+
+    
+
+
+ 
+
+    
+
+   
+ 
 
     
 
