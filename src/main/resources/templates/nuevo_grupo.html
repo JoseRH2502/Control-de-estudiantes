@@ -9,6 +9,15 @@
 
     <div id="layoutSidenav_content">
         <main>
+            
+            <div class ="text-center alert alert-success alert-dismissable" th:if = "${success != null}">
+                <label th:text = "${success}"></label>
+            </div>
+                                
+            <div class ="text-center alert alert-danger alert-dismissable" th:if = "${error != null}">
+                <label th:text = "${error}"></label>
+            </div>
+            
             <div class="container">
                 <div class="row center-screen ">
                     <div class="col-lg-7">

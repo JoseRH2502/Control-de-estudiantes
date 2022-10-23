@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
     <div th:replace="~{fragments/header :: header}"></div>
+
+
     <body class="bg-celeste">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
+
+                
                 <main>
+                    
+
                     <div class="container">
                         <div class="row center-screen ">
                             <div class="col-lg-5">
                                 <div class="card-border-loggin shadow-lg border-0  rounded-lg mt-5 ">
                                     <div class="card-header-loggin"><h3 class="text-center font-weight-light my-4">Iniciar Sesión</h3></div>
                                     <div class="card-body">
-                                    
+                                        
+                                       
                                         <form th:action="@{/login}" th:object="${usuario}" method="post">
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" th:object="${username}" name="email" id="inputEmail" type="email" placeholder="name@example.com" />
@@ -34,11 +41,13 @@
                                         </form>
                                     </div>
                                     <div th:if="${param.error}" class="alert alert-danger" role="alert">
-                                        invalid username
+                                        Datos invalidos
                                     </div>
                                     <div th:if="${param.logout}" class="alert alert-success" role="alert">
-                                        You have been logged out
+                                        Desconexión exitosa
                                     </div>
+
+
                                     <div class="card-footer-loggin text-center py-3">
                                         <div class="small"><a href="\register">Crear nueva cuenta</a></div>
                                     </div>
