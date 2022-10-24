@@ -40,9 +40,13 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Funciones Principales</div>
-                        <a class="nav-link" href="404.html">
+                        <a class="nav-link" href="/registro_estudiantes">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Ingreso de personas
+                            Registrar un estudiante
+                        </a>
+                        <a class="nav-link" href="/invitados">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Registar un invitado
                         </a>
                         <div th:if="${#httpServletRequest.isUserInRole('ADMIN')}">
                             <div class="sb-sidenav-menu-heading">Consultas</div>
@@ -52,24 +56,24 @@
                             </a>
                             <a class="nav-link" href="/consulta_usuarios">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Consultar usuarios.
+                                Consultar usuarios
                             </a>
                             <a class="nav-link" href="/consulta_grupos">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Consultar grupos.
+                                Consultar grupos
                             </a>
                             <div class="sb-sidenav-menu-heading">Administrativo</div>
                             <a class="nav-link" href="/register">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Registrar usuario.
+                                Agregar un usuario
                             </a>
                             <a class="nav-link" href="/estudiantes_nuevo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Registrar persona.
+                                Agregar un estudiante 
                             </a>
                             <a class="nav-link" href="/nuevo_grupo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Agregar grupo.
+                                Agregar un grupo
                             </a>
                         </div>
                     </div>
