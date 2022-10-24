@@ -47,7 +47,7 @@ public class Estudiante extends Persona {
 	private String email;
 
     @OneToOne
-    @JoinColumn(name = "FK_encargado", updatable = false, nullable = false)
+    @JoinColumn(name = "FK_encargado", updatable = false, nullable = true)
     private Encargado encargado;
     
 	public Estudiante() {
