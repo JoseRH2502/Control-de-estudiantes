@@ -46,10 +46,10 @@ public class Estudiante extends Persona {
     @Column(name = "email",nullable = true, unique = true,length = 50)
 	private String email;
 
-    /*@OneToOne
+    @OneToOne
     @JoinColumn(name = "FK_encargado", updatable = false, nullable = true)
     private Encargado encargado;
-    */
+    
 	public Estudiante() {
 		
 	}
