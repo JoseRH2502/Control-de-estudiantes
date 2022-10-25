@@ -7,6 +7,7 @@
 
    <div th:replace="~{fragments/navegation :: navegation}"></div>
    <div th:replace="~{fragments/navegation :: navegation_left}"></div>
+   
 
     <br>
     <div class="container">
@@ -14,6 +15,10 @@
           <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
               <h1 class="text-center">Edición de estudiante</h1>
               <div class="card-body">
+
+
+
+
                  <form th:action="@{/estudiantes/{id}(id=${estudiante.id})}" th:object="${estudiante}" method="POST">
                     
                     <div class="form-group">
@@ -52,9 +57,27 @@
                        <button class="btn btn-success">Guardar</button>
                     </div>
                  </form>
+
+
+
+
+
+
               </div>
           </div>
        </div>
     </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

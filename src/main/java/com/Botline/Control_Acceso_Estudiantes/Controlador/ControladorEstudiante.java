@@ -40,14 +40,25 @@ public class ControladorEstudiante {
 	@PostMapping("/estudiantes")  //traer 
 	public String guardarEstudiante(@ModelAttribute("estudiante") Estudiante estudiante) {
 		servicioEstudiante.guardarEstudiante(estudiante);
-
 		return "redirect:/estudiantes";
+	}
+
+	@GetMapping("/estudiantes_codigo")
+	public String listarEstudiante(Model modelo) {
+		modelo.addAttribute("estudiantes", servicioEstudiante.listarTodosLosEstudiantes());
+		return "generar_codigos"; 
 	}
 
 	@GetMapping("/estudiantes/editar/{id}")
 	public String mostrarFormularioDeEditar(@PathVariable int id, Model modelo) {
 		modelo.addAttribute("estudiante", servicioEstudiante.obtenerEstudiantePorId(id));
 		return "editar_estudiante";
+	}
+
+	@GetMapping("/estudiantes/visualizar/{id}")
+	public String mostrarCarneEstudiante(@PathVariable int id, Model modelo) {
+		modelo.addAttribute("estudiante", servicioEstudiante.obtenerEstudiantePorId(id));
+		return "carne_estudiante";
 	}
 
 	@PostMapping("/estudiantes/{id}")

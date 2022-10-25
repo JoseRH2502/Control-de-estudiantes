@@ -48,7 +48,7 @@ public class Estudiante extends Persona {
 
     @OneToOne
     @JoinColumn(name = "FK_encargado", updatable = false, nullable = true)
-    private Encargado encargado;
+    private Encargado encargado; 
     
 	public Estudiante() {
 		
