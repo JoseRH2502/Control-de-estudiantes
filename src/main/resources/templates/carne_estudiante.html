@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Editar estudiante</title>
+<!-- CSS only -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script type="text/Javascript" src="/js/JsBarcode.all.min.js"></script>
+</head>
+<body>
+
+
+
+   <main>
+      <div class="container">
+          <div class="row center-screen ">
+              <div class="col-lg-7">
+                  <div class="card-border-loggin shadow-lg border-0 rounded-lg mt-5">
+                  </div>
+              </div>
+          </div>
+      </div>
+  </main>
+
+
+
+          <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+              <h1 class="text-center">Carné Estudiante</h1>
+              <div class="card-body">
+                 <form th:action="@{/estudiantes/{id}(id=${estudiante.id})}" th:object="${estudiante}" method="POST">
+                    
+                    <div class="form-group" id="cedula"> 
+                        <label>Cédula: </label>                        
+                        <div class="card mb-4">
+                           <div class="card-body" >
+                              <td th:text="${estudiante.cedula}"  >cedula</td>
+                           </div>
+                        </div>
+                     </div>
+
+
+                    <div class="form-group">
+                       <label>Nombre : </label>
+                       <div class="card mb-4">
+                        <div class="card-body">
+                           <td th:text="${estudiante.nombre}">nombre</td>
+                        </div>
+                     </div>
+                    </div>
+                    
+                    <div class="form-group">
+                       <label>Apellido1 : </label>
+                       <div class="card mb-4">
+                           <div class="card-body">
+                              <td th:text="${estudiante.Apellido1}">Apellido1</td>
+                           </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Apellido2 : </label>
+                        <div class="card mb-4">
+                           <div class="card-body">
+                              <td th:text="${estudiante.Apellido2}">Apellido2</td>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="form-group">
+                        <label>grado : </label>
+                        <div class="card mb-4">
+                           <div class="card-body">
+                              <td th:text="${estudiante.grado}"></td>
+                           </div>
+                        </div>
+                     </div>
+                    
+                     <div class="col-lg-3">
+                        <a th:href="@{/estudiantes}" class="btn btn-primary btn-sm mb3">Atrás</a>
+                     </div>
+
+
+                     <div class="form-group">
+                        <label>grado : </label>
+                        <div class="card mb-4">
+                           <div class="card-body">
+                              <svg id="barcode1"></svg>
+                              <script th:inline="javascript">
+                                 var ide = /*[[${estudiante}]]*/ {};
+                                 JsBarcode("#barcode1",ide.cedula);
+                               </script>
+                           </div>
+                        </div>
+                     </div>
+
+
+                     
+
+
+
+                 </form>
+              </div>
+          </div>
+       </div>
+    </div>
+</body>
+</html>

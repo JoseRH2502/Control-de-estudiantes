@@ -6,12 +6,23 @@
     <div th:replace="~{fragments/navegation :: navegation}"></div>
     <div th:replace="~{fragments/navegation :: navegation_left}"></div>
 
+    
+
 
 
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Reporte de usuario</h1>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+                        ¿Desea agregar más usuarios?
+                        <div class="col-lg-3">
+                            <a th:href="@{/register}" class="btn btn-primary btn-sm mb3">Agregar usuario</a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card mb-4">
                     <div class="card-header">
