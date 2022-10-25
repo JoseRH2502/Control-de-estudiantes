@@ -16,4 +16,4 @@ jobs:
         key: ${{ secrets.SSHKEY }}
       with:
         source: "*"
-        target: "/home/ubuntu/"
+        target: "/home/ubuntu"
