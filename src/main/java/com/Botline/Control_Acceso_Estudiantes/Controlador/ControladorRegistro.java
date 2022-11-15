@@ -46,7 +46,7 @@ public class ControladorRegistro {
 	public String registrarEstudiante(@PathVariable int id, @ModelAttribute("estudiante") Estudiante estudiante,
 			Model modelo) {
 		Estudiante EstudianteExistente = servicioEstudiante.obtenerEstudiantePorId(id);
-
+		
 		Date fecha = new java.util.Date();
 
 		Calendar calendario = Calendar.getInstance();
