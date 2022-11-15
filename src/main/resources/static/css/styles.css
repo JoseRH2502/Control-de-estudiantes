@@ -101,7 +101,7 @@ input::-webkit-inner-spin-button {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.822);
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 30px;
@@ -127,7 +127,9 @@ input::-webkit-inner-spin-button {
 
 .bg-celeste {
   --bs-bg-opacity: 1;
-  background-color: rgba(0, 188, 228) !important;
+  /*background-color: rgba(0, 188, 228) !important;*/
+  background-image: url("../img/login.jpg");
+  background-size: 100% 100%;  
 }
 /*#########################################################################################################*/
 
