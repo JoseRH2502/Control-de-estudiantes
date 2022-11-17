@@ -60,7 +60,7 @@
                                     <td th:text="${usuarios.apellido2}">Segundo Apellido</td>
                                     <td th:text="${usuarios.cedula}">Cédula</td>
                                     <td th:text="${usuarios.email}">Correo</td>
-                                    <td th:text="${usuarios.authority}">Role</td>
+                                    <td th:text="${usuarios.authority[0].authority == 'ROLE_ADMIN'} ? 'Administrador' : 'Usuario'" />
                                     <td th:text="${usuarios.enabled}">Activo</td>
                                 </tr>
                             </tbody>

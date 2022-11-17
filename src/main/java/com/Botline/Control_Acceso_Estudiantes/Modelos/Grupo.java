@@ -19,7 +19,7 @@ public class Grupo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-    @Column(name = "codigo",nullable = false, unique = true)
+    @Column(name = "codigo",nullable = false)
 	private String codigo;
 
     @Column(name = "activo",nullable = false)

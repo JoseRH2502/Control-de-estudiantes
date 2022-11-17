@@ -1,83 +1,74 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-   <div th:replace="~{fragments/header :: header}"></div></head>
+   <div th:replace="~{fragments/header :: header}"></div>
+</head>
+
 <body>
 
 
    <div th:replace="~{fragments/navegation :: navegation}"></div>
    <div th:replace="~{fragments/navegation :: navegation_left}"></div>
-   
-
-    <br>
-    <div class="container">
-       <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-              <h1 class="text-center">Edición de estudiante</h1>
-              <div class="card-body">
 
 
+   <br>
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Edición de estudiante</h1>
+            <div class="card-body">
 
 
-                 <form th:action="@{/estudiantes/{id}(id=${estudiante.id})}" th:object="${estudiante}" method="POST">
-                    
-                    <div class="form-group">
-                        <label>cedula: </label>
-                        <input type="text" name="cedula" th:field="*{cedula}" class="form-control" placeholder="Ingrese la cedula del estudiante : " required>
-                     </div>
 
-                    <div class="form-group">
-                       <label>Nombre : </label>
-                       <input type="text" name="nombre" th:field="*{nombre}" class="form-control" placeholder="Ingrese el nombre del estudiante : " required>
-                    </div>
-                    
-                    <div class="form-group">
-                       <label>Apellido1 : </label>
-                       <input type="text" name="apellido1" th:field="*{apellido1}" class="form-control" placeholder="Ingrese el primer apellido del estudiante : " required>
-                    </div>
 
-                    <div class="form-group">
-                        <label>Apellido2 : </label>
-                        <input type="text" name="apellido2" th:field="*{apellido2}" class="form-control" placeholder="Ingrese el segundo apellido del estudiante : " required>
-                     </div>
+               <form th:action="@{/estudiantes/{id}(id=${estudiante.id})}" th:object="${estudiante}" method="POST">
 
-                     <div class="form-group">
-                        <label>grado : </label>
-                        <input type="text" name="grado" th:field="*{grado}" class="form-control" placeholder="Digite la grado del estudiante : " required>
-                     </div>
-                    
+                  <div class="form-group">
+                     <label>cedula: </label>
+                     <input type="text" name="cedula" th:field="*{cedula}" class="form-control"
+                        placeholder="Ingrese la cedula del estudiante : " required>
+                  </div>
 
-                     <!--
+                  <div class="form-group">
+                     <label>Nombre : </label>
+                     <input type="text" name="nombre" th:field="*{nombre}" class="form-control"
+                        placeholder="Ingrese el nombre del estudiante : " required>
+                  </div>
+
+                  <div class="form-group">
+                     <label>Apellido1 : </label>
+                     <input type="text" name="apellido1" th:field="*{apellido1}" class="form-control"
+                        placeholder="Ingrese el primer apellido del estudiante : " required>
+                  </div>
+
+                  <div class="form-group">
+                     <label>Apellido2 : </label>
+                     <input type="text" name="apellido2" th:field="*{apellido2}" class="form-control"
+                        placeholder="Ingrese el segundo apellido del estudiante : " required>
+                  </div>
+
+                  <div class="form-group">
+                     <label>grado : </label>
+                     <input type="text" name="grado" th:field="*{grado}" class="form-control"
+                        placeholder="Digite la grado del estudiante : " required>
+                  </div>
+
+
+                  <!--
                      <div class="form-group">
                         <label>seccion : </label>
                         <input type="text" name="seccion" th:field="*{seccion}" class="form-control" placeholder="Digite la sección del estudiante : " required>
                      </div>-->
-                    
-                    <div class="box-footer">
-                       <button class="btn btn-success">Guardar</button>
-                    </div>
-                 </form>
 
-
-
-
-
-
-              </div>
-          </div>
-       </div>
-    </div>
+                  <div class="box-footer">
+                     <button class="btn btn-success">Guardar</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

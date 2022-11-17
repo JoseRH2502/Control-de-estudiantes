@@ -37,7 +37,7 @@ public class Estudiante extends Persona {
 	private String seccion; */
 
     @Column(name = "grado",nullable = false)
-	private int grado;
+	private String grado;
 
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL)
     private List<RegistroEstudiantes> registros;
@@ -47,14 +47,14 @@ public class Estudiante extends Persona {
 	private String email;
 
     @OneToOne
-    @JoinColumn(name = "FK_encargado", updatable = false, nullable = true)
+    @JoinColumn(name = "FK_encargado")
     private Encargado encargado; 
     
 	public Estudiante() {
 		
 	}
 
-    public Estudiante(int cedula, String nombre, String apellido1, String apellido2, String seccion, int grado, String email) {
+    public Estudiante(int cedula, String nombre, String apellido1, String apellido2, String seccion, String grado, String email) {
         super();
         this.cedula = cedula;
         this.nombre = nombre;
@@ -65,7 +65,7 @@ public class Estudiante extends Persona {
         this.email = email;
     }
 
-    public Estudiante(int id, int cedula, String nombre, String apellido1, String apellido2, String seccion, int grado, String email) {
+    public Estudiante(int id, int cedula, String nombre, String apellido1, String apellido2, String seccion, String grado, String email) {
         super();
         this.id = id;
         this.cedula = cedula;
@@ -120,11 +120,11 @@ public class Estudiante extends Persona {
         this.seccion = seccion;
     } */
 
-    public int getGrado() {
+    public String getGrado() {
         return grado;
     }
 
-    public void setGrado(int grado) {
+    public void setGrado(String grado) {
         this.grado = grado;
     }
 

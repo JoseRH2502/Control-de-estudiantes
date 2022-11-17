@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <div th:replace="~{fragments/header :: header}"></div>
 
 <body class="sb-nav-fixed">
@@ -10,12 +9,12 @@
     <div id="layoutSidenav_content">
         <main>
             
-            <div class ="text-center alert alert-success alert-dismissable" th:if = "${success != null}">
-                <label th:text = "${success}"></label>
+            <div class="text-center alert alert-success alert-dismissable" th:if="${success != null}">
+                <label th:text="${success}"></label>
             </div>
-                                
-            <div class ="text-center alert alert-danger alert-dismissable" th:if = "${error != null}">
-                <label th:text = "${error}"></label>
+
+            <div class="text-center alert alert-danger alert-dismissable" th:if="${error != null}">
+                <label th:text="${error}"></label>
             </div>
             
             <div class="container">
@@ -38,9 +37,9 @@
 
                                         <div class="col-md-6">
                                             <div class="form-floating ">
-                                                <input class="form-control" th:field="*{date}" name="apellido1"
-                                                    id="inputDate" type="number" placeholder="Fecha del grupo" />
-                                                <label for="inputDate">Fecha del grupo</label>
+                                                <input class="form-control"  th:field="*{date}" name="date" type="number" min="2022" max="2099" step="1" value="2016"
+                                                id="inputDate"  placeholder="Año de vigencia"/>
+                                                <label for="inputDate">Año de vigencia</label>
                                             </div>
                                         </div>
                                     </div>

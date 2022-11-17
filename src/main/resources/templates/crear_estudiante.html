@@ -6,12 +6,19 @@
 
 <body>
 
-
     <div th:replace="~{fragments/navegation :: navegation}"></div>
     <div th:replace="~{fragments/navegation :: navegation_left}"></div>
 
     <div id="layoutSidenav_content">
         <main>
+            
+            <div class="text-center alert alert-success alert-dismissable" th:if="${success != null}">
+                <label th:text="${success}"></label>
+            </div>
+
+            <div class="text-center alert alert-danger alert-dismissable" th:if="${error != null}">
+                <label th:text="${error}"></label>
+            </div>
 
             <div class="container-fluid px-4">
                 
@@ -34,7 +41,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-floating mb-3 mb-md-0">
                                                     <input type="text" name="nombre" th:field="*{nombre}" class="form-control"
-                                                    placeholder="Ingrese el nombre del estudiante : " required>
+                                                    placeholder="Ingrese el nombre del estudiante : " >
                                                     <label for="inputFirstName">Nombre</label>
                                                 </div>
                                             </div>
@@ -42,7 +49,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-floating mb-3 mb-md-0">
                                                     <input type="text" name="apellido1" th:field="*{apellido1}" class="form-control"
-                                                    placeholder="Ingrese el primer apellido del estudiante : " required>
+                                                    placeholder="Ingrese el primer apellido del estudiante : " >
                                                     <label for="inputFirstName">Primer Apellido</label>
                                                 </div>
                                             </div>
@@ -50,36 +57,31 @@
                                             <div class="col-md-4">
                                                 <div class="form-floating mb-3 mb-md-0">
                                                     <input type="text" name="apellido2" th:field="*{apellido2}" class="form-control"
-                                                    placeholder="Ingrese el segundo apellido del estudiante : " required>
+                                                    placeholder="Ingrese el segundo apellido del estudiante : " >
                                                     <label for="inputFirstName">Segundo Apellido</label>
                                                 </div>
                                             </div>
                                         
                                         </div>
 
-
                                         <div class="row mb-6">
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3">
                                                     <input type="text" name="cedula" th:field="*{cedula}" class="form-control"
-                                                placeholder="Ingrese la cedula del estudiante : " required>
+                                                placeholder="Ingrese la cedula del estudiante : " >
                                                     <label for="inputCedula">Cédula</label>
                                                 </div>
                                             </div>
-                                        </div>
-    
-                                        <div class="form-group">
-    
-                                            <div class="mt-3">
-                                                <label for="grupo">Grupo:</label>
-                                                <select class="dataTable-selector " id="grupo" name="grado">
-                                                    <option th:each="grupo : ${grupos}" th:value="${grupo.codigo}"
-                                                        th:text="${grupo.codigo}">
-                                                    </option>
-                                                </select>
-    
+                                            <div class="col-md-4">
+                                                <div class="mt-3">
+                                                    <label for="grupo">Grupo:</label>
+                                                    <select class="dataTable-selector " id="grupo" name="grado">
+                                                        <option th:each="grupo : ${grupos}" th:value="${grupo.codigo}"
+                                                            th:text="${grupo.codigo} + '  (' + ${grupo.date} + ')'">
+                                                        </option>
+                                                    </select>
+                                                </div>   
                                             </div>
-
                                         </div>
     
                                         <div class="box-footer">
