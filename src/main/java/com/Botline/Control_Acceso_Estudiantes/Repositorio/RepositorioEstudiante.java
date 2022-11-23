@@ -8,4 +8,5 @@ import com.Botline.Control_Acceso_Estudiantes.Modelos.Estudiante;
 @Repository
 public interface RepositorioEstudiante extends JpaRepository<Estudiante, Integer>{
     List<Estudiante> findByCedula(int cedula);
+
 }

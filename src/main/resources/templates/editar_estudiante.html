@@ -1,27 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<div th:replace="~{fragments/header :: header}"></div>
 
-<head>
-   <div th:replace="~{fragments/header :: header}"></div>
-</head>
-
-<body>
-
-
+<body class="sb-nav-fixed">
    <div th:replace="~{fragments/navegation :: navegation}"></div>
    <div th:replace="~{fragments/navegation :: navegation_left}"></div>
 
-
-   <br>
-   <div class="container">
-      <div class="row">
-         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-            <h1 class="text-center">Edición de estudiante</h1>
-            <div class="card-body">
-
-
-
-
+   <div id="layoutSidenav_content">
+      <main>
+         <div class="container-fluid px-4">
+            <h1 class="mt-4">Ingreso de estudiante</h1>
+            <div class="container">
                <form th:action="@{/estudiantes/{id}(id=${estudiante.id})}" th:object="${estudiante}" method="POST">
 
                   <div class="form-group">
@@ -54,21 +43,15 @@
                         placeholder="Digite la grado del estudiante : " required>
                   </div>
 
-
-                  <!--
-                     <div class="form-group">
-                        <label>seccion : </label>
-                        <input type="text" name="seccion" th:field="*{seccion}" class="form-control" placeholder="Digite la sección del estudiante : " required>
-                     </div>-->
-
                   <div class="box-footer">
                      <button class="btn btn-success">Guardar</button>
                   </div>
                </form>
             </div>
          </div>
-      </div>
-   </div>
+      </main>
+      <div th:replace="~{fragments/footer :: footer}"></div>
+      <div th:replace="~{fragments/styles :: styles}"></div>
 </body>
 
 </html>

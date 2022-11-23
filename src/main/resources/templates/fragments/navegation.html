@@ -40,7 +40,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Funciones Principales</div>
-                        <a class="nav-link" href="/registro_estudiantes">
+                        <a class="nav-link" href="/registroManual">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Ingreso de estudiantes
                         </a>
@@ -50,6 +50,10 @@
                         </a>
                         <div th:if="${#httpServletRequest.isUserInRole('ADMIN')}">
                             <div class="sb-sidenav-menu-heading">Consultas</div>
+                            <a class="nav-link" href="/registro_estudiantes">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Consultar ingresos de estudiantes
+                            </a>
                             <a class="nav-link" href="/estudiantes">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Consultar estudiantes

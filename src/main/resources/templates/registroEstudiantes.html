@@ -8,14 +8,13 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Registros</h1>
+                <h1 class="mt-4">Estudiantes ingresados</h1>
 
-          
                 <div class="card mb-4">
                     <div class="card-body">
                         ¿Desea agregar un nuevo registro?
                         <div class="col-lg-3">
-                            <a th:href="@{/registro_nuevo}" class="btn btn-primary btn-sm mb3">Agregar Registro</a>
+                            <a th:href="@{/registroManual}" class="btn btn-primary btn-sm mb3">Agregar Registro</a>
                         </div>
                     </div>
                 </div>
@@ -31,40 +30,19 @@
                         <table id="datatablesSimple">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Cedula</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido 1</th>
-                                    <th>Apellido 2</th>
-                                    <th>Fecha</th>
-                                    <th>Hora</th>
+                                    <th>Cédula</th>
+                                    <th>Nombre Completo</th>        
+                                    <th>Fecha de ingreso</th>
+                                    <th>Hora de ingreso</th>
                                     <!--<th>Seccion</th>-->
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Cedula</th>
-                                    <th>Nombre</th>
-                                    <th>apellido 1</th>
-                                    <th>apellido 2</th>
-                                    <th>Nombre</th>
-                                    <th>Fecha</th>
-                                    <th>Hora</th>
-                                    <!--<th>Seccion</th>-->
-                                    <th>Acciones</th>
-                                </tr>
-                            </tfoot>
                             <tr th:each="registro : ${registros}">
-                                <td th:text="${registro.id}">ID</td>
                                 <td th:text="${registro.estudiante.cedula}">Cedula</td>
-                                <td th:text="${registro.estudiante.nombre}">Nombre</td>
-                                <td th:text="${registro.estudiante.apellido1}">Apellido 1</td>
-                                <td th:text="${registro.estudiante.apellido2}">Apellido 2</td>
-                                <td th:text="${registro.fecha}">Fecha</td>
-                                <td th:text="${registro.hora}">Hora</td>
-                    
+                                <td th:text="${registro.estudiante.nombre} + ' ' + ${registro.estudiante.apellido1} +''+${registro.estudiante.apellido2}  ">Nombre Completo</td>
+                                <td th:text="${registro.fecha}">Fecha de ingreso</td>
+                                <td th:text="${registro.hora}">Hora de ingreso</td>
                                 <td>
                                     <a th:href="@{/registro_estudiantes/{id}(id=${registro.id})}"
                                         class="btn btn-danger">Eliminar</a>

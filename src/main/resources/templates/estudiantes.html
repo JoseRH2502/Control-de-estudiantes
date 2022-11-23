@@ -36,34 +36,19 @@
                         <table id="datatablesSimple">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>cedula</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido1</th>
-                                    <th>Apellido2</th>
+                                   
+                                    <th>Cédula</th>
+                                    <th>Nombre Completo</th>
                                     <th>Grado</th>
                                     <!--<th>Seccion</th>-->
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>cedula</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido1</th>
-                                    <th>Apellido2</th>
-                                    <th>Grado</th>
-                                    <!--<th>Seccion</th>-->
-                                    <th>Acciones</th>
-                                </tr>
-                            </tfoot>
+                            
                             <tr th:each="estudiante : ${estudiantes}">
-                                <td th:text="${estudiante.id}">ID</td>
-                                <td th:text="${estudiante.cedula}">cedula</td>
-                                <td th:text="${estudiante.nombre}">Nombre</td>
-                                <td th:text="${estudiante.apellido1}">Apellido1</td>
-                                <td th:text="${estudiante.apellido2}">Apellido2</td>
+                                
+                                <td th:text="${estudiante.cedula}">Cédula</td>
+                                <td th:text=" ${estudiante.nombre} + ' ' + ${estudiante.apellido1} + ' ' + ${estudiante.apellido2} ">Nombre Completo</td>
                                 <td th:text="${estudiante.grado}">Grado</td>
                                 <!--<td th:text="${estudiante.seccion}">Seccion</td>-->
                                 <td>

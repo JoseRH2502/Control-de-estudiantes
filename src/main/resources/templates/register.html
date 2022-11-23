@@ -40,7 +40,7 @@
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <input class="form-control" th:field="*{apellido1}" name="apellido1"
-                                                    id="inputLastName" type="text" placeholder="Enter your last name" />
+                                                    id="inputLastName" type="text" placeholder="Primer apellido" />
                                                 <label for="inputLastName">Primer apellido</label>
                                             </div>
                                         </div>
@@ -48,7 +48,7 @@
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <input class="form-control" th:field="*{apellido2}" name="apellido2"
-                                                    id="inputLastName" type="text" placeholder="Enter your last name" />
+                                                    id="inputLastName" type="text" placeholder="Segundo apellido" />
                                                 <label for="inputLastName">Segundo apellido</label>
                                             </div>
                                         </div>
@@ -58,19 +58,20 @@
                                     <div class="row mb-6">
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" th:field="*{cedula}" name="cedula"
-                                                    id="inputCedula" type="number" value="" />
+                                                <input class="form-control" name="cedula" id="inputCedula" type="number"
+                                                    placeholder="Cédula" />
                                                 <label for="inputCedula">Cédula</label>
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" th:field="*{email}" name="email" id="inputEmail"
+                                                    type="email" placeholder="name@example.com" />
+                                                <label for="inputEmail">Email</label>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" th:field="*{email}" name="email" id="inputEmail"
-                                            type="email" placeholder="name@example.com" />
-                                        <label for="inputEmail">Email</label>
-                                    </div>
-
+                                    
 
                                     <div class="row mb-3">
                                         <div class="col-md-6">
@@ -120,4 +121,5 @@
         <div th:replace="~{fragments/footer :: footer}"></div>
         <div th:replace="~{fragments/styles :: styles}"></div>
 </body>
+
 </html>
