@@ -9,4 +9,7 @@ import java.util.List;
 @Repository
 public interface RepositorioRegistroEstudiante extends JpaRepository<RegistroEstudiantes, Integer> {
     List<RegistroEstudiantes> findByEstudianteIdAndFecha(int fk_estudiante, Date fecha);
+    List<RegistroEstudiantes> findByFecha(Date fecha);
+    List<RegistroEstudiantes> findByEstudianteId(int  fk_estudiante);
+   
 }

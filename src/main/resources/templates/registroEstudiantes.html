@@ -20,7 +20,37 @@
                 </div>
 
 
+                <form th:action="@{/ConsultaDate}" th:object="${registro_estudiantes}" method="post">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            Buscar registro por fecha
+                            <div class="form-floating mb-3">
+                                <input class="form-control" th:object="${fecha}" name="fecha" id="fecha" type="date" placeholder="name@example.com" />
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                <button class="btn btn-primary btn-block">Buscar</button>   
+                            </div>
+    
+                        </div>
+                    </div>
+                </form>
 
+                <form th:action="@{/ConsultaPersona}" th:object="${registro_estudiantes}" method="post">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            Buscar registro estudiante por cedula
+                            <div class="form-floating mb-3">
+                                <input class="form-control" th:object="${cedula}" name="cedula" id="fecha" type="number" placeholder="name@example.com" />
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                <button class="btn btn-primary btn-block">Buscar</button>   
+                            </div>
+    
+                        </div>
+                    </div>
+                </form>
+
+        
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
@@ -56,5 +86,4 @@
         <div th:replace="~{fragments/footer :: footer}"></div>
         <div th:replace="~{fragments/styles :: styles}"></div>
 </body>
-
 </html>
