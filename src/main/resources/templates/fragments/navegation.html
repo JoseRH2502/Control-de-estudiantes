@@ -50,6 +50,12 @@
                         </a>
                         <div th:if="${#httpServletRequest.isUserInRole('ADMIN')}">
                             <div class="sb-sidenav-menu-heading">Consultas</div>
+
+                            <a class="nav-link" href="/consultasGenerales">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Consultar Generales
+                            </a>
+
                             <a class="nav-link" href="/registro_estudiantes">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Consultar ingresos de estudiantes

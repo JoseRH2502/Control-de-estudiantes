@@ -36,8 +36,8 @@ public class Estudiante extends Persona {
     /*@Column(name = "seccion",nullable = false,length = 50)
 	private String seccion; */
 
-    @Column(name = "grado",nullable = false)
-	private String grado;
+    @Column(name = "FK_grupo",nullable = false)
+	private String grupo;
 
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL)
     private List<RegistroEstudiantes> registros;
@@ -61,7 +61,7 @@ public class Estudiante extends Persona {
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         //this.seccion = seccion;
-        this.grado = grado;
+        this.grupo = grado;
         this.email = email;
     }
 
@@ -73,7 +73,7 @@ public class Estudiante extends Persona {
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
         //this.seccion = seccion;
-        this.grado = grado;
+        this.grupo = grado;
         this.email = email;
     }
 
@@ -121,18 +121,13 @@ public class Estudiante extends Persona {
     } */
 
     public String getGrado() {
-        return grado;
+        return grupo;
     }
 
     public void setGrado(String grado) {
-        this.grado = grado;
+        this.grupo = grado;
     }
 
-    @Override
-    public String toString() {
-        return "Estudiante [apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", cedula=" + cedula + ", grado="
-                + grado + ", nombre=" + nombre +  "]";
-    }
 
     public int getId() {
         return id;

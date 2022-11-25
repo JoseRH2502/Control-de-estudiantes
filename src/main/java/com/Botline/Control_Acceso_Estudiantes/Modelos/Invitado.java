@@ -104,8 +104,8 @@ public class Invitado extends Persona {
         this.apellido2 = apellido2;
     }
 
-    public String getFecha() {
-        return fecha.toString();
+    public Date getFecha() {
+        return fecha;
     }
 
     public void setFecha(Date fecha) {

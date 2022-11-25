@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.Botline.Control_Acceso_Estudiantes.Modelos.Estudiante;
+import com.Botline.Control_Acceso_Estudiantes.Modelos.Grupo;
 import com.Botline.Control_Acceso_Estudiantes.Modelos.RegistroEstudiantes;
 import com.Botline.Control_Acceso_Estudiantes.Repositorio.RepositorioEstudiante;
+import com.Botline.Control_Acceso_Estudiantes.Repositorio.RepositorioGrupo;
 import com.Botline.Control_Acceso_Estudiantes.Repositorio.RepositorioRegistroEstudiante;
 import com.Botline.Control_Acceso_Estudiantes.Servicios.IestudianteServicio;
 
@@ -40,6 +42,10 @@ public class ControladorRegistro {
 
 	@Autowired
     private RepositorioRegistroEstudiante repoEstudianteRegistro;
+
+	@Autowired
+	private RepositorioGrupo repoGrupo; 
+
 
 	private List<RegistroEstudiantes> consultas;
 
@@ -141,15 +147,16 @@ public class ControladorRegistro {
 	@PostMapping("/ConsultaPersona")  //traer 
 	public String ConsultarPersona(@ModelAttribute("registro_estudiantes") Estudiante estudiante, RedirectAttributes attribute , BindingResult result) {
 		consultas = new ArrayList<>();
+		
 		if (estudiante.getCedula() == 0){
 			attribute.addFlashAttribute("error", "Es necesario llenar todos los campos");
-			return "redirect:/registroManual";
+			return "redirect:/ConsultaDate";
 	
 		}
 
 		if ( repoEstudiante.findByCedula(estudiante.getCedula() ).isEmpty()){
 			attribute.addFlashAttribute("error", "Estudiante no encontrado en la base de datos.");
-			return "redirect:/registroManual";
+			return "redirect:/ConsultaDate";
 		}
 
 		List<Estudiante> EstudianteExistente = repoEstudiante.findByCedula(estudiante.getCedula());
@@ -157,6 +164,45 @@ public class ControladorRegistro {
 		consultas = repoEstudianteRegistro.findByEstudianteId(estudiante.getId());
 		return "redirect:/ConsultaDate";
 	}
+
+	@GetMapping({ "/consultasGenerales"}) //@GetMapping({ "/estudiantes"}) 
+	public String ConsultasGenerales(Model modelo) {
+		modelo.addAttribute("registros", consultas);
+		return "consultasGenerales"; 
+	}
+
+	@PostMapping("/Consultaestudiantesgrupo")  //traer 
+	public String ConsultarestudianteGrup(@ModelAttribute("grupo") Grupo grupo, RedirectAttributes attribute , BindingResult result) {
+		
+		consultas = new ArrayList<>();
+
+		if (grupo.getCodigo() == ""){
+			attribute.addFlashAttribute("error", "Es necesario llenar todos los campos");
+			return "redirect:/consultasGenerales";
+	
+		}
+	
+		List<Grupo> grupos = repoGrupo.findByCodigo(grupo.getCodigo());
+		
+		if (grupos.size()==0){
+			attribute.addFlashAttribute("error", "Grupo Invalido");
+			return "redirect:/consultasGenerales";
+	
+		}
+		Grupo grupoExistente = grupos.get(0);
+		List<Estudiante> estudiantesdelGrupo = repoEstudiante.findByGrupo(grupoExistente.getCodigo());
+
+		for(int i=0; i< estudiantesdelGrupo.size();i++){
+			consultas.addAll(repoEstudianteRegistro.findByEstudianteId(estudiantesdelGrupo.get(i).getId()));
+		}
+	
+		return  "redirect:/consultasGenerales"; 
+	}
+
+
+
+
+	
 
 	
 
