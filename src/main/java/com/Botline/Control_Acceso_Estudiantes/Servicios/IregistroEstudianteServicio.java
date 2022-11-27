@@ -11,4 +11,6 @@ public interface IregistroEstudianteServicio {
 	public RegistroEstudiantes obtenerRegistroPorId(int id);
 	
 	public void eliminarRegistro(int id);
+
 }
+

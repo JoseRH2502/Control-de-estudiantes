@@ -8,43 +8,27 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Estudiantes</h1>
-
-
+                <h1 class="mt-4">Asistencia</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Tables</li>
+                </ol>
                 
 
 
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                ¿Desea agregar más estudiantes?
-
-                                <div class="mt-4 mb-0">
-                                    <div class="d-grid">
-                                        <a th:href="@{/estudiantes_nuevo}" class="btn btn-primary btn-sm mb3">Agregar
-                                            estudiante</a>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        ¿Desea agregar más estudiantes?
+                        <div class="col-lg-3">
+                            <a th:href="@{/estudiantes_nuevo}" class="btn btn-primary btn-sm mb3">Agregar estudiante</a>
                         </div>
                     </div>
                 </div>
 
-
-
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <div class="mb-0">
-                                    <div class="d-grid">
-                                        <a th:href="@{/estudiantes_codigo}" class="btn btn-primary btn-sm mb3">Generar
-                                            Códigos</a>
-
-                                    </div>
-                                </div>
-                            </div>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="col-lg-3">
+                            <a th:href="@{/estudiantes_codigo}" class="btn btn-primary btn-sm mb3">Generar Códigos</a>
                         </div>
                     </div>
                 </div>
@@ -59,21 +43,34 @@
                         <table id="datatablesSimple">
                             <thead>
                                 <tr>
-
-                                    <th>Cédula</th>
-                                    <th>Nombre Completo</th>
+                                    <th>ID</th>
+                                    <th>cedula</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido1</th>
+                                    <th>Apellido2</th>
                                     <th>Grado</th>
                                     <!--<th>Seccion</th>-->
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
-
+                            <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>cedula</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido1</th>
+                                    <th>Apellido2</th>
+                                    <th>Grado</th>
+                                    <!--<th>Seccion</th>-->
+                                    <th>Acciones</th>
+                                </tr>
+                            </tfoot>
                             <tr th:each="estudiante : ${estudiantes}">
-
-                                <td th:text="${estudiante.cedula}">Cédula</td>
-                                <td
-                                    th:text=" ${estudiante.nombre} + ' ' + ${estudiante.apellido1} + ' ' + ${estudiante.apellido2} ">
-                                    Nombre Completo</td>
+                                <td th:text="${estudiante.id}">ID</td>
+                                <td th:text="${estudiante.cedula}">cedula</td>
+                                <td th:text="${estudiante.nombre}">Nombre</td>
+                                <td th:text="${estudiante.apellido1}">Apellido1</td>
+                                <td th:text="${estudiante.apellido2}">Apellido2</td>
                                 <td th:text="${estudiante.grado}">Grado</td>
                                 <!--<td th:text="${estudiante.seccion}">Seccion</td>-->
                                 <td>

@@ -67,6 +67,12 @@ public class ControladorEstudiante {
 		return "generar_codigos"; 
 	}
 
+	@GetMapping("/asistencia")
+	public String buscarEstudianteID(Model modelo) {
+		modelo.addAttribute("estudiantes", servicioEstudiante.listarTodosLosEstudiantes());
+		return "asistencia"; 
+	}
+
 	@GetMapping("/estudiantes/editar/{id}")
 	public String mostrarFormularioDeEditar(@PathVariable int id, Model modelo) {
 		modelo.addAttribute("estudiante", servicioEstudiante.obtenerEstudiantePorId(id));

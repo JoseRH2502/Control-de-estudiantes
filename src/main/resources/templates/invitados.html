@@ -10,47 +10,67 @@
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Invitados</h1>
 
-            
 
-                <div class="card mb-4">
-                    <div class="card-body">
-                        ¿Desea agregar más invitados?
-                        <div class="col-lg-3">
-                            <a th:href="@{/invitado_nuevo}" class="btn btn-primary btn-sm mb3">Agregar Invitado</a>
+
+
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            ¿Desea agregar más invitados?
+
+                            <div class="mt-4 mb-0">
+                                <div class="d-grid">
+                                    <a th:href="@{/invitado_nuevo}" class="btn btn-primary btn-sm mb3">Agregar
+                                        Invitado</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                
-                <form th:action="@{/ConsultaDateInvitado}" th:object="${invitado}" method="post">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            Buscar registro por fecha
-                            <div class="form-floating mb-3">
-                                <input class="form-control" th:object="${fecha}" name="fecha" id="fecha" type="date" placeholder="name@example.com" />
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                <button class="btn btn-primary btn-block">Buscar</button>   
-                            </div>
-    
-                        </div>
-                    </div>
-                </form>
+                <div class="row mb-6">
 
-                <form th:action="@{/ConsultaInvitadoCedula}" th:object="${invitado}" method="post">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            Buscar registro estudiante por cedula
-                            <div class="form-floating mb-3">
-                                <input class="form-control" th:object="${cedula}" name="cedula" id="cedula" type="number" placeholder="name@example.com" />
+                    <div class="col-md-6 mb-3">
+                        <form th:action="@{/ConsultaDate}" th:object="${registro_estudiantes}" method="post">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    Buscar registro por fecha
+                                    <input class="mt-4 form-control" th:object="${fecha}" name="fecha" type="date" />
+
+                                    <div class="mt-4 mb-0">
+                                        <div class="d-grid">
+                                            <button class="btn btn-primary btn-block">Buscar</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                <button class="btn btn-primary btn-block">Buscar</button>   
-                            </div>
-    
-                        </div>
+                        </form>
                     </div>
-                </form>
+
+                    <div class="col-md-6 mb-3">
+                        <form th:action="@{/ConsultaDate}" th:object="${registro_estudiantes}" method="post">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    Buscar Estudiante por Cédula
+                                    <input class="mt-4 form-control" th:object="${cedula}" name="cedula" id="cedula"
+                                        type="number" />
+                                    <div class="mt-4 mb-0">
+                                        <div class="d-grid">
+                                            <button class="btn btn-primary btn-block">Buscar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+
+
+
+
+
 
 
 
@@ -101,7 +121,7 @@
                                 <!--<td th:text="${estudiante.seccion}">Seccion</td>-->
                                 <td>
                                     <a th:href="@{/invitadoTerminar/{id}(id=${invitado.id})}"
-                                    class="btn btn-info">Finalizar</a>
+                                        class="btn btn-info">Finalizar</a>
 
                                     <a th:href="@{/invitado/{id}(id=${invitado.id})}"
                                         class="btn btn-danger">Eliminar</a>

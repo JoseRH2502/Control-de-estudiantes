@@ -20,39 +20,103 @@
 <body class="sb-nav-fixed">
     <div th:replace="~{fragments/navegation :: navegation}"></div>
     <div th:replace="~{fragments/navegation :: navegation_left}"></div>
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid px-4">
-                    <h1 class="mt-4">Generar códigos de estudiantes</h1>
 
 
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Tables</li>
-                    </ol>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            Generar codigos
-                            <!--<a target="_blank" href="https://datatables.net/">official DataTables documentation</a>-->
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Generar códigos de estudiantes</h1>
+
+
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Tables</li>
+                </ol>
+
+
+
+
+
+                <!-- 
+                <tr th:each="estudiante, iterador : ${estudiantes}">
+
+                    <div class="col-lg-2">
+                        <div class="card-border-loggin shadow-lg border-0 rounded-lg mt-6">
+                            <div class="card-header-loggin">
+                                <h5 class="text-center font-weight-light my-4">
+                                    <td th:text="${estudiante.nombre}"></td>
+                                </h5>
+                            </div>
+
+                            <h5 class="text-center font-weight-light my-4">
+
+
+                                <svg th:data-value="${estudiante.cedula}" th:data-text="${estudiante.cedula}"
+                                    class="codigo" /></svg>
+
+                                <script>
+                                    JsBarcode(".codigo").init();
+                                </script>
+
+                            </h5>
+                            <div class="card-body">
+                            </div>
                         </div>
                     </div>
+                    <div>
+                        .
+                    </div>
+                </tr> -->
 
 
 
 
 
-                    <tr th:each="estudiante, iterador : ${estudiantes}">
 
-                        <div class="col-lg-4">
-                            <div class="card-border-loggin shadow-lg border-0 rounded-lg mt-6">
-                                <div class="card-header-loggin">
-                                    <h5 class="text-center font-weight-light my-4">
-                                        <td th:text="${estudiante.nombre}"></td>
-                                    </h5>
-                                </div>
 
-                                <h5 class="text-center font-weight-light my-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Tabla de estudiantes
+                    </div>
+
+                    <div class="card-body">
+                        <table id="datatablesSimple">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>cedula</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido1</th>
+                                    <th>Apellido2</th>
+                                    <th>Grado</th>
+                                    <!--<th>Seccion</th>-->
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+
+                            <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>cedula</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido1</th>
+                                    <th>Apellido2</th>
+                                    <th>Grado</th>
+                                    <!--<th>Seccion</th>-->
+                                    <th>Acciones</th>
+                                </tr>
+                            </tfoot>
+
+                            <tr th:each="estudiante : ${estudiantes}">
+                                <td th:text="${estudiante.id}">ID</td>
+                                <td th:text="${estudiante.cedula}">cedula</td>
+                                <td th:text="${estudiante.nombre}">Nombre</td>
+                                <td th:text="${estudiante.apellido1}">Apellido1</td>
+                                <td th:text="${estudiante.apellido2}">Apellido2</td>
+                                <td th:text="${estudiante.grado}">Grado</td>
+                                <!--<td th:text="${estudiante.seccion}">Seccion</td>-->
+                                <td>
 
 
                                     <svg th:data-value="${estudiante.cedula}" th:data-text="${estudiante.cedula}"
@@ -62,92 +126,23 @@
                                         JsBarcode(".codigo").init();
                                     </script>
 
-                                </h5>
-                                <div class="card-body">
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            .
-                        </div>
-                    </tr>
-
-
-
-
-
-
-
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            Tabla de estudiantes
-                        </div>
-
-                        <div class="card-body">
-                            <table id="datatablesSimple">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>cedula</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido1</th>
-                                        <th>Apellido2</th>
-                                        <th>Grado</th>
-                                        <!--<th>Seccion</th>-->
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-
-                                <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>cedula</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido1</th>
-                                        <th>Apellido2</th>
-                                        <th>Grado</th>
-                                        <!--<th>Seccion</th>-->
-                                        <th>Acciones</th>
-                                    </tr>
-                                </tfoot>
-
-                                <tr th:each="estudiante : ${estudiantes}">
-                                    <td th:text="${estudiante.id}">ID</td>
-                                    <td th:text="${estudiante.cedula}">cedula</td>
-                                    <td th:text="${estudiante.nombre}">Nombre</td>
-                                    <td th:text="${estudiante.apellido1}">Apellido1</td>
-                                    <td th:text="${estudiante.apellido2}">Apellido2</td>
-                                    <td th:text="${estudiante.grado}">Grado</td>
-                                    <!--<td th:text="${estudiante.seccion}">Seccion</td>-->
-                                    <td>
-
-
-                                        <svg th:data-value="${estudiante.cedula}" th:data-text="${estudiante.cedula}"
-                                            class="codigo" /></svg>
-
-                                        <script>
-                                            JsBarcode(".codigo").init();
-                                        </script>
-
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
+            </div>
 
 
 
-            </main>
+        </main>
 
-            <div th:replace="~{fragments/footer :: footer}"></div>
-            <div th:replace="~{fragments/styles :: styles}"></div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+        <div th:replace="~{fragments/styles :: styles}"></div>
 
 
 
 </body>
-<svg id="barcode"></svg>
 
 
 </html>

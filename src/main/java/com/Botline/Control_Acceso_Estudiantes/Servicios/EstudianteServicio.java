@@ -34,10 +34,17 @@ public class EstudianteServicio implements IestudianteServicio {
     public List<Estudiante> listarTodosLosEstudiantes() {
         return repositorio.findAll();
     }
+    
+
 
     @Override
     public Estudiante obtenerEstudiantePorId(int id) {
         return repositorio.findById(id).get();
+    }
+
+    @Override
+    public Estudiante obtenerEstudiantePorCedula(int cedula) {
+        return repositorio.findById(cedula).get();
     }
     
 }

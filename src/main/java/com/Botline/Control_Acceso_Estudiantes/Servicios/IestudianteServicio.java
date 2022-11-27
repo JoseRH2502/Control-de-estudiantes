@@ -14,4 +14,6 @@ public interface IestudianteServicio {
 	public Estudiante actualizarEstudiante(Estudiante estudiante);
 	
 	public void eliminarEstudiante(int id);
+
+	public Estudiante obtenerEstudiantePorCedula(int cedula);
 }
